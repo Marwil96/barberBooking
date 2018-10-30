@@ -1,0 +1,78 @@
+import React, { Component } from 'react';
+import '../App.css';
+
+import ScrollArrow from './common/ScrollArrow';
+import ProgressBar from './common/ProgressBar';
+import arrow from '../img/blackArrow.svg';
+
+class FixedFooter extends Component {
+	state={
+		draggedOut:false,
+		booked: false,
+		barber:this.props.barber,
+		style:this.props.style,
+		date:"21e Oktober",
+		time:"18.00-18.20"
+	}
+
+	bookedScreen(booked) {
+		console.log("bookedScreen")
+		if(booked === true) {
+			return(
+				<div className="booked"> <h1> Du har nu bokat {this.props.barber} klockan {this.props.time}, {this.props.date} </h1> <div className="backToWebsiteButton" >
+					<h1> Gå Tillbaka till hemsidan. </h1>
+			</div> </div>
+				)
+		}
+		else {return}
+	}
+	dragOutOverview(dragged) {
+	console.log("OverView", this.state.barber, this.state.style)
+	if(dragged === true) {
+	return(
+		<div className="overviewContainer"> 
+			<img src={arrow} onClick={() => this.setState({draggedOut:false})} />
+			<h1> Överblick </h1>
+			<p><span>{this.props.barber}</span> kommer<br></br> <span>{this.props.style}</span> ditt hår <br></br>den <span>{this.props.date}, {this.props.time}</span>.<br></br>Stämmer det?</p>
+			<div className="overviewButton" onClick={() => this.setState({booked:true})} >
+					<h1> Skicka iväg bokningen </h1>
+			</div>
+		</div>
+		)
+	}
+	else {
+		return null
+	}
+	}
+	whatFooter(state) {
+		if(state === 4) {
+			return (
+				<div className="fixedFooter fixedButton" onClick={() => this.setState({draggedOut:true})}>
+					<h1> Överblicka bokningen </h1>
+				</div>
+				)
+		} else {
+			return(
+			<div className="fixedFooter"> 
+			<ProgressBar progressBar={this.props.progressBar} />
+        	<div className="arrowContainer">
+	        <ScrollArrow onScrollArrowClick={this.props.onScrollArrowClick} direction={"upp"}/>
+	        <ScrollArrow onScrollArrowClick={this.props.onScrollArrowClick} direction={"down"}/>
+	        </div>
+	        </div>
+	        )
+		}
+	}
+render() {
+	return (
+		<div className="fixedFooterContainer">
+        {this.whatFooter(this.props.state)}
+        {this.dragOutOverview(this.state.draggedOut)}
+        {this.bookedScreen(this.state.booked)}
+        </div>
+	)
+	}
+}
+
+
+export default FixedFooter;
