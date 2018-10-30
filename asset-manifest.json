@@ -1,0 +1,18 @@
+{
+  "main.css": "/barberBooking/static/css/main.f9cf7a13.chunk.css",
+  "main.js": "/barberBooking/static/js/main.c8afba7b.chunk.js",
+  "main.js.map": "/barberBooking/static/js/main.c8afba7b.chunk.js.map",
+  "static/js/1.3ace4b6b.chunk.js": "/barberBooking/static/js/1.3ace4b6b.chunk.js",
+  "static/js/1.3ace4b6b.chunk.js.map": "/barberBooking/static/js/1.3ace4b6b.chunk.js.map",
+  "runtime~main.js": "/barberBooking/static/js/runtime~main.3e60c8b6.js",
+  "runtime~main.js.map": "/barberBooking/static/js/runtime~main.3e60c8b6.js.map",
+  "static/media/damklippning.svg": "/barberBooking/static/media/damklippning.6b2a4d66.svg",
+  "static/media/arrow.svg": "/barberBooking/static/media/arrow.51574c43.svg",
+  "static/media/blackArrow.svg": "/barberBooking/static/media/blackArrow.7f639a48.svg",
+  "static/media/logo.svg": "/barberBooking/static/media/logo.5d5d9eef.svg",
+  "static/media/potraitImage.jpg": "/barberBooking/static/media/potraitImage.7e9a6a66.jpg",
+  "static/css/main.f9cf7a13.chunk.css.map": "/barberBooking/static/css/main.f9cf7a13.chunk.css.map",
+  "index.html": "/barberBooking/index.html",
+  "precache-manifest.6a70b7d2c242309cfa2e0015a93b5ab4.js": "/barberBooking/precache-manifest.6a70b7d2c242309cfa2e0015a93b5ab4.js",
+  "service-worker.js": "/barberBooking/service-worker.js"
+}
