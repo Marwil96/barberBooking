@@ -24,19 +24,19 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/js/runtime~main.3e60c8b6.js"
   },
   {
-    "revision": "fb4e822b6382d960f0bf",
-    "url": "/barberBooking/static/js/main.fb4e822b.chunk.js"
+    "revision": "9cd7d7e0cb248a2cf861",
+    "url": "/barberBooking/static/js/main.9cd7d7e0.chunk.js"
   },
   {
-    "revision": "44a572d732f021b96570",
-    "url": "/barberBooking/static/js/1.44a572d7.chunk.js"
+    "revision": "4dc3214feb3367ede231",
+    "url": "/barberBooking/static/js/1.4dc3214f.chunk.js"
   },
   {
-    "revision": "fb4e822b6382d960f0bf",
-    "url": "/barberBooking/static/css/main.96c367f9.chunk.css"
+    "revision": "9cd7d7e0cb248a2cf861",
+    "url": "/barberBooking/static/css/main.26017ada.chunk.css"
   },
   {
-    "revision": "e31692d4dad1dfe26948e910c12d2461",
+    "revision": "d0d0d72e906222c9648a354073fb8470",
     "url": "/barberBooking/index.html"
   }
 ];
