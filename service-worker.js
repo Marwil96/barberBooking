@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/barberBooking/precache-manifest.97755c3cb359549a4c43d0cc286572c3.js"
+  "/barberBooking/precache-manifest.a48792b74568590160fd8250605ffb1d.js"
 );
 
 workbox.clientsClaim();
