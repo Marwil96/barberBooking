@@ -19,9 +19,10 @@ class FixedFooter extends Component {
 		console.log("bookedScreen")
 		if(booked === true) {
 			return(
-				<div className="booked"> <h1> Du har nu bokat {this.props.barber} klockan {this.props.time}, {this.props.date} </h1> <div className="backToWebsiteButton" >
+				<div className="booked"> <h1> Du har nu bokat {this.props.barber} klockan {this.props.time}, {this.props.date} </h1> 
+				<a href="http://www.google.com"><div className="backToWebsiteButton">
 					<h1> Gå Tillbaka till hemsidan. </h1>
-			</div> </div>
+			</div> </a></div>
 				)
 		}
 		else {return}
@@ -32,8 +33,8 @@ class FixedFooter extends Component {
 	return(
 		<div className="overviewContainer"> 
 			<img src={arrow} onClick={() => this.setState({draggedOut:false})} />
-			<h1> Överblick </h1>
-			<p><span>{this.props.barber}</span> kommer<br></br> <span>{this.props.style}</span> ditt hår <br></br>den <span>{this.props.date}, {this.props.time}</span>.<br></br>Stämmer det?</p>
+			<h2> Överblick </h2>
+			<p><span>{this.props.barber}</span> kommer utföra <span>{this.props.style}</span> på ditt hår den <span>{this.props.date}, {this.props.time}</span>.<br></br>Stämmer det?</p>
 			<div className="overviewButton" onClick={() => this.setState({booked:true})} >
 					<h1> Skicka iväg bokningen </h1>
 			</div>
@@ -45,6 +46,7 @@ class FixedFooter extends Component {
 	}
 	}
 	whatFooter(state) {
+		console.log("whatFooter", state)
 		if(state === 4) {
 			return (
 				<div className="fixedFooter fixedButton" onClick={() => this.setState({draggedOut:true})}>

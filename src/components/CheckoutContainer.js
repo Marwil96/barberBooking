@@ -11,13 +11,27 @@ class CheckoutContainer extends Component {
 		}
 		 onInputChange(term) {
 		 	console.log(term.length);
-        	this.setState({term});
+        	this.setState({term: term});
         	if(term.length > 1) {
         		console.log("I AM BIG")
-        		this.props.onClick("checkoutContainer",term)
+        		// this.props.onClick("checkoutContainer",term)
+        	} else if(term.length === 0){
+        		console.log("inanförIFstate",this.state.term);
+        		this.props.onClick("removeCheckoutContainer",term)
         	}
 
-    }
+    	}
+    	onInputSubmit(e) {
+    		e.preventDefault();		
+    		var term = this.state.term;
+    		console.log(term)
+    		if(term.length > 1) {
+        		this.props.onClick("checkoutContainer",term)
+        	} else if(term.length === 0){
+        		this.props.onClick("removeCheckoutContainer",term)
+        	}
+		 	console.log("ONSUBMIT");
+    	}
 
 	renderPayment(method) {
 			console.log(method)
@@ -26,7 +40,7 @@ class CheckoutContainer extends Component {
 					<div className="formContainer">
 						<form> 
 							<h3>Credit Card Number</h3>
-							<input className="checkOutInput" placeholder="name@domain.com" type="email"/>
+							<input className="checkOutInput" placeholder="name@domain.com" type="email" />
 						</form>
 						<form> 
 							<h3>Expiration Date</h3>
@@ -42,9 +56,9 @@ class CheckoutContainer extends Component {
 			else if(method === "book") {
 				return (
 					<div className="formContainer">
-						<form> 
-							<h3>Name *</h3>
-							<input className="checkOutInput" placeholder="name" type="text" required  onChange={event => this.onInputChange(event.target.value)}/>
+						<form onSubmit={this.onInputSubmit.bind(this)} > 
+							<h3>Name*</h3>
+							<input className="checkOutInput" placeholder="name" type="text" required  onChange={event => this.onInputChange(event.target.value)} onBlur={this.onInputSubmit.bind(this)}/>
 						</form>
 
 						<form> 

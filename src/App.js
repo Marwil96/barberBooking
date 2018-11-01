@@ -3,9 +3,27 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 import dateFns from "date-fns";
+import { hotjar } from 'react-hotjar';
 
-import potraitImage from './img/potraitImage.jpg';
+import johannaDahl from './img/barbers/johannaDahl.jpg';
+import peterFiskare from './img/barbers/peterFiskare.jpg';
+import kajsaJonsson from './img/barbers/kajsaJonsson.jpg';
+import hannaPetterson from './img/barbers/hannaPetterson.jpeg';
+import johanKarlsson from './img/barbers/johanKarlsson.jpg';
+import margaretaKaj from './img/barbers/margaretaKaj.jpg';
+
+
+
+
 import damklippning from './img/damklippning.svg';
+
+import damKlippning from './img/curl.svg';
+import shaving from './img/razor.svg';
+import colouring from './img/paint-bucket.svg';
+import herrKlippning from './img/hairstyle.svg';
+import hairWash from './img/hairwashing.svg';
+import styling from './img/mirror.svg';
+import permentering from './img/women-treatment.svg'
 
 import Header from './components/common/Header';
 import CardContainer from './components/CardContainer';
@@ -16,25 +34,27 @@ import TimeContainer from './components/TimeContainer';
 import Calendar from './components/Calendar';
 import CheckoutContainer from './components/CheckoutContainer';
 
+// hotjar.initialize(1071700, 6);
+
 class App extends Component {
   constructor() {
     super();
      this.state = {
       styleCard: [
-      {style:"Herr Klippning", cardSubheader:"360kr/30min" },
-      {style:"Dam Klippning", cardSubheader:"360kr/30min" },
-      {style:"Permentera", cardSubheader:"360kr/30min" },
-      {style:"Rakning", cardSubheader:"360kr/30min" },
-      {style:"Herr Klippning", cardSubheader:"360kr/30min" },
-      {style:"Herr Klippning", cardSubheader:"360kr/30min" }
+      {style:"Herr Klippning", cardSubheader:"370kr/30min", img:herrKlippning },
+      {style:"Dam Klippning", cardSubheader:"420kr/30min", img:damKlippning },
+      {style:"Permentera", cardSubheader:"260kr/30min", img:permentering },
+      {style:"Rakning", cardSubheader:"140kr/30min", img:shaving },
+      {style:"Styling", cardSubheader:"199kr/30min", img:styling },
+      {style:"Färga håret", cardSubheader:"899kr/30min", img:colouring }
       ],
       potraitCard: [
-      {name:"Johanna Dahl"},
-      {name:"Peter Fiskare"},
-      {name:"Kajsa Jonsson"},
-      {name:"Hanna Petterson" },
-      {name:"Johan Karlsson" },
-      {name:"Margaretha Kaj"}
+      {name:"Johanna Dahl", img:johannaDahl},
+      {name:"Peter Fiskare", img:peterFiskare},
+      {name:"Kajsa Jonsson", img:kajsaJonsson},
+      {name:"Hanna Petterson", img:hannaPetterson },
+      {name:"Johan Karlsson", img:johanKarlsson },
+      {name:"Margaretha Kaj", img:margaretaKaj}
       ],
       selectedDate: new Date(),
       displayedDate: dateFns.format(new Date(),
@@ -63,33 +83,45 @@ class App extends Component {
       console.log("whatStyle === CARD", cardHeader)
       this.setState({
       savedStyle: cardHeader,
-      progressBar: 25,
-      whatState: 1
+      progressBar: (this.state.progressBar + 25),
+      whatState: (this.state.whatState + 1)
     })
     const myDomNode = ReactDOM.findDOMNode(this.refs.chooseBarber)
     myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   } else if(whatStyle === "timeButton") {
     this.setState({
-      progressBar: 75,
+      progressBar: (this.state.progressBar + 25),
       time: cardHeader,
-      whatState: 3
+      whatState: (this.state.whatState + 1)
     })
     const myDomNode = ReactDOM.findDOMNode(this.refs.choosePayment)
     myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   } 
   else if(whatStyle === "checkoutContainer") {
     console.log("CHECKOUT")
-    this.setState({
-      progressBar: 100,
+    if(this.state.whatState >= 4){
+      console.log(this.state.whatState, "STATE => 4")
+      this.setState({
       whatState: 4
     })
-  } 
+    }else {
+      this.setState({
+      progressBar: (this.state.progressBar + 25),
+      whatState: (this.state.whatState + 1)
+    })
+    }
+  } else if(whatStyle === "removeCheckoutContainer") {
+    this.setState({
+      progressBar: (this.state.progressBar - 25),
+      whatState: (this.state.whatState - 1)
+    })
+  }
   else {
     console.log("WhatBarber", cardHeader)
     this.setState({
       savedBarber: cardHeader,
-      progressBar: 50,
-      whatState: 2
+      progressBar: (this.state.progressBar + 25),
+      whatState: (this.state.whatState + 1)
     })
     const myDomNode = ReactDOM.findDOMNode(this.refs.chooseTime)
     myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
@@ -118,7 +150,7 @@ class App extends Component {
         
         <div className="sectionContainer chooseBarber" ref={ "chooseBarber" }> 
           <Header header={"2.Vem vill du ska klippa dig?"} color="white"/> 
-          <CardContainer data={this.state.potraitCard} img={potraitImage} whatStyle="card potraitCard" onClick={this.onCardClick} /> 
+          <CardContainer data={this.state.potraitCard} img={johannaDahl} whatStyle="card potraitCard" onClick={this.onCardClick} /> 
         </div>
 
         <div className="sectionContainer chooseDate" ref={ "chooseTime" }> 

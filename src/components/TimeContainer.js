@@ -18,7 +18,7 @@ class TimeContainer extends Component {
 	renderTimeButtons(whatDay) {
 		console.log("renderTimeButtons", this.state.freeTimes[whatDay])
 		if(this.state.freeTimes[whatDay] === undefined) {
-			return <h1 className="noFreeTimes"> No free times </h1>
+			return <h1 className="noFreeTimes"> Inga lediga tider </h1>
 		} else {
 		// for (let i = 0; i < this.state.freeTimes[whatDay].length; i++) {
 		// 	console.log("renderTimeButtons INSIDE LOOP", this.state.freeTimes[whatDay])

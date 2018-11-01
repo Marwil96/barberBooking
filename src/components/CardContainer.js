@@ -7,9 +7,9 @@ class CardContainer extends Component {
 	renderCards(data) {
 		if(this.props.whatStyle === "card") {
 		console.log(data)
-		return (<Card cardHeader={data.style} cardSubheader={data.cardSubheader} img={this.props.img} whatStyle={this.props.whatStyle} onClick={this.props.onClick} />)
+		return (<Card cardHeader={data.style} cardSubheader={data.cardSubheader} img={data.img} whatStyle={this.props.whatStyle} onClick={this.props.onClick} />)
 		} else if(this.props.whatStyle === "card potraitCard") {
-			return <Card cardHeader={data.name} img={this.props.img} whatStyle={this.props.whatStyle} onClick={this.props.onClick} />
+			return <Card cardHeader={data.name} img={data.img} whatStyle={this.props.whatStyle} onClick={this.props.onClick} />
 		} 
 	}	
 
