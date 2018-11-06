@@ -38,7 +38,7 @@ import Calendar from './components/Calendar';
 import CheckoutContainer from './components/CheckoutContainer';
 import CheckoutContainerVersion2 from './components/CheckoutContainerVersion2';
 
-// hotjar.initialize(1071700, 6);
+hotjar.initialize(1071700, 6);
 
   const defaultOptions = {
       loop: true,
