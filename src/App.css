@@ -153,17 +153,18 @@ a {
   background:white;
   display: flex;
   justify-content:center;
-  z-index: 1000;
+  z-index: 1100;
   flex-direction:column;
 }
 .booked h1 {
   font-size:32px;
   margin-top:5vh;
-  margin-left:16px;
   text-align:left;
   width:80%;
   opacity:0.7;
+  text-align:center;
   color:black;
+  position:absolute;
 }
 .backToWebsiteButton {
     height: 8vh;
@@ -208,9 +209,14 @@ a {
   margin-bottom:10vh;
 }
 .header {
-  font-size:24px;
-  width:65%;
-  margin-left:16px;
+  /*font-size:24px;
+  width:65%;*/
+  font-size: 28px;
+  width: 80%;
+  /*margin-left:16px;*/
+  margin-bottom:16px;
+  text-align: center;
+  align-self: center;
 }
 .headerCenter {
   width:100%;
@@ -385,11 +391,13 @@ main {
 /* GRID */
 
 .row {
-  margin: 0;
+  margin: 0 0 6px 0;
+  /*margin:0;*/
   padding: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -412,6 +420,10 @@ main {
   justify-content: center;
   text-align: center;
 }
+.col-center span {
+  font-size: 22px;
+  opacity: 0.9;
+}
 
 .col-end {
   justify-content: flex-end;
@@ -433,8 +445,10 @@ main {
 .calendar .header {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 115%;
-  padding: 1.5em 0;
+  /*font-size: 115%;
+  padding: 1.5em 0;*/
+  font-size: 24px;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -468,31 +482,44 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 3em;
-  border-right: 1px solid var(--border-color);
+  /*height: 3em;*/
+  height:5vh;
+  border-radius:7px;
+  /*border-right: 1px solid var(--border-color);*/
+  background: #00dfad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  font-size:16px;
   overflow: hidden;
   cursor: pointer;
-  background: var(--neutral-color);
+/*  background: var(--neutral-color);*/
   transition: 0.25s ease-out;
 }
 
 .calendar .body .cell:hover {
-  background: var(--bg-color);
-  transition: 0.5s ease-out;
+    transform: scale(1.2);
+  font-size: 24px;
+  box-shadow: #1d1d1d36 2px 1px 13px 0px;
 }
 
 .calendar .body .selected {
-  border-left: 10px solid transparent;
+  /*border-left: 10px solid transparent;
   border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
-  border-image-slice: 1;
+  border-image-slice: 1;*/
+  transform: scale(1.2);
+  font-size: 24px;
+  box-shadow: #1d1d1d36 2px 1px 13px 0px;
 }
 
 .calendar .body .row {
-  border-bottom: 1px solid var(--border-color);
+  /*border-bottom: 1px solid var(--border-color);*/
 }
 
 .calendar .body .row:last-child {
   border-bottom: none;
+  margin-bottom: 5vh;  
 }
 
 .calendar .body .cell:last-child {
@@ -500,17 +527,19 @@ main {
 }
 
 .calendar .body .cell .number {
-  position: absolute;
-  font-size: 82.5%;
-  line-height: 1;
+/*  position: absolute;*/
+  /*font-size: 82.5%;*/
+  font-size:16px;
+  /*line-height: 1;
   top: .75em;
   right: .75em;
-  font-weight: 700;
+  font-weight: 700;*/
 }
 
 .calendar .body .disabled {
   color: var(--text-color-light);
   pointer-events: none;
+  background:white !important;
 }
 
 .calendar .body .cell .bg {
@@ -518,10 +547,11 @@ main {
   line-height: 1;
   color: white;
   opacity: 0;
-  font-size: 5em;
+  font-size: 4em;
+  display:none;
   position: absolute;
-  top: -.2em;
-  right: -.05em;
+ /* top: -.2em;
+  right: -.05em;*/
   transition: .25s ease-out;
   letter-spacing: -.07em;
 }
@@ -533,12 +563,13 @@ main {
 
 .calendar .body .col {
   flex-grow: 0;
-  flex-basis: calc(100%/7);
-  width: calc(100%/7);
+  flex-basis: calc(100%/9);
+  /*flex-basis: calc(100%/7);
+  width: calc(100%/7);*/
 }
-.numberGreen {
+/*.numberGreen {
 color:white;
-}
+}*/
 .bgGreen {
   background:#00DFAD !important;
 }
@@ -562,6 +593,7 @@ color:white;
   margin-left:6px;
   display:flex;
   align-items:center;
+  display:none;
 }
 .instructions h3 {
   font-size: 14px;
@@ -621,11 +653,11 @@ color:white;
 .formContainer {
   margin-left:16px;
   margin-right:16px;
-  margin-top: 3vh;
+/*  margin-top: 3vh;*/
   background:white;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
   border-radius:8px;
-  padding: 16px 0 16px 0;
+  padding: 16px 0 0px 0;
   transition:all 1s ease-in-out;
   animation: sweepIn 0.6s forwards;
 }
@@ -639,14 +671,42 @@ color:white;
   margin-bottom: 16px;
 }
 .formContainer div {
-  margin-left:16px;
-  margin-bottom: 16px;
+  width: 97%;
+  margin-right: 0;
+  font-family: poppins;
+  margin-bottom:0;
+}
+.formContainer div div:after {
+  /*border-bottom: 2px solid;*/
+}
+.formContainer div label {
+  font-family: poppins;
 }
 .formContainer h3 {
   margin: 0px 0px 6px 0px;
   font-size:16px;
   font-weight:400;
+  margin-top: 16px;
+  margin-bottom: -8px;
 }
+.formButton {
+     margin: 0;
+    width: 100%!important;
+    height: 51px;
+    background: #f44336;
+    /* position: absolute; */
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 24px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #00000038 0px 0px 13px;
+    background-color: #f44336;
+}
+
 .checkOutInput {
   width: 90%;
 height: 39px;
@@ -656,5 +716,29 @@ box-sizing: border-box;
 border-radius: 6px;
 font-size:16px;
     padding-left: 8px;
+}
+.booked {
+  height:100vh;
+  width:100%;
+  position:fixed;
+  background: white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  top: 0;
+}
+.animationContainer svg {
+      
+}
+.displayNone {
+  display:none;
+}
+.checkerAnimationContainer {
+  position:absolute;
+  align-self: flex-end;
+  transform: translate3d(11px, 57px, 0px);
+}
+.checkerTimeButton {
+  transform: translate3d(156px, 40px, 0px);
 }
 

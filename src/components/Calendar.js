@@ -8,7 +8,51 @@ class Calendar extends Component {
     	currentMonth: new Date(),
     	selectedDate: this.props.selectedDate,
     	availableDates: [28,29,30],
-    	almostAvailableDates: [24,25,26]
+    	almostAvailableDates: [24,25,26],
+      freetimes: {
+        301: ["11.20 - 11.40"],
+        302: ["11.20 - 11.40", "11.40 - 12.00"],
+        303: ["11.20 - 11.40", "11.40 - 12.00"],
+        304: ["11.20 - 11.40", "11.40 - 12.00"],
+        305: ["11.20 - 11.40", "11.40 - 12.00"],
+        306: ["11.20 - 11.40"],
+        307: ["11.20 - 11.40"],
+        308: ["11.20 - 11.40"],
+        309: ["11.20 - 11.40", "11.40 - 12.00"],
+        310: ["11.20 - 11.40", "11.40 - 12.00"],
+        311: ["11.20 - 11.40", "11.40 - 12.00"],
+        312: ["11.20 - 11.40", "11.40 - 12.00"],
+        313: ["11.20 - 11.40", "11.40 - 12.00"],
+        314: ["11.20 - 11.40", "11.40 - 12.00"],
+        315: ["11.20 - 11.40", "11.40 - 12.00"],
+        316: ["11.20 - 11.40", "11.40 - 12.00"],
+        317: ["11.20 - 11.40", "11.40 - 12.00"],
+        318: ["11.20 - 11.40", "11.40 - 12.00"],
+        319: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        320: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        321: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        322: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        323: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        324: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        325: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        326: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        327: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        328: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        329: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        330: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        331: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        332: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        333: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        334: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        335: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        336: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        337: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        338: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        339: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        340: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        341: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+        342: ["11.20 - 11.40", "11.40 - 12.00", "12.40 - 13.00"],
+      }
 
 	};
 
@@ -60,22 +104,31 @@ class Calendar extends Component {
     let days = [];
     let day = startDate;
     let formattedDate = "";
-
+        // console.log("renderCells", this.state.freetimes[301].length);
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
-        if(Number(formattedDate) === this.state.availableDates[i]) {
+        // console.log("renderCells",this.state.freetimes[dateFns.format(cloneDay, 'DDDD')].length);
+        if(this.state.freetimes[dateFns.format(cloneDay, 'DDDD')] === undefined) {
+          var style= "number ";
+          var bgColor ="col cell bgRed ";
+        }else {
+        if(this.state.freetimes[dateFns.format(cloneDay, 'DDDD')].length > 2) {
+          // console.log("LEDIGT")
         	var style = "number numberGreen";
         	var bgColor ="col cell bgGreen ";
-        } else if(Number(formattedDate) === this.state.almostAvailableDates[1]) {
-        	console.log("almostAvailableDates")
-        	var style= "number numberYellow";
+        } else if(this.state.freetimes[dateFns.format(cloneDay, 'DDDD')].length === 2) {
+          // console.log("LITE LEDIGT")
+        	var style= "number";
         	var bgColor ="col cell bgYellow ";
         }	else {
+          // console.log("Upptaget")
         	var style= "number ";
-        	var bgColor ="col cell ";
+        	var bgColor ="col cell bgRed ";
         }
+        }
+        // console.log("renderCells",dateFns.format(cloneDay, 'DDDD'), this.state.freetimes);
         days.push(
           <div
             className={bgColor + `col cell ${
@@ -86,7 +139,7 @@ class Calendar extends Component {
             key={day}
             onClick={() => this.props.onDateClick(dateFns.parse(cloneDay))}
           >
-            <span className={style}>{formattedDate}</span>
+            <span className={style} onClick={() => this.props.scrollDown("onCalenderClick")}>{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
         );
