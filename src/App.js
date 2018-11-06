@@ -219,7 +219,7 @@ class App extends Component {
         <FixedFooter progressBar={this.state.progressBar} onScrollArrowClick={this.onScrollArrowClick} state={this.state.whatState} barber={this.state.savedBarber} style={this.state.savedStyle} date={this.state.displayedDate} time={this.state.time}/>
         <div className="sectionContainer chooseStyle"> 
           <Header header={"1. Vilken typ av klippning vill du ha?"} /> 
-          <SubHeader header={"Välj en eller flera behandlingar du vill ha."} />
+          <SubHeader header={"Välj en eller flera behandlingar."} />
           <CardContainer data={this.state.styleCard} cardHeader={"Damklippning"} cardSubheader={"360kr/30min"} img={damklippning} whatStyle="card" onClick={this.onCardClick} />
         </div>
         
