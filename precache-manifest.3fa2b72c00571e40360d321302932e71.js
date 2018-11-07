@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "69e56fd3592a25496b791713ddafe2fc",
-    "url": "/barberBooking/static/media/johanKarlsson.69e56fd3.jpg"
+    "revision": "8244d22a23b4a18eb672bd2ab4f2dc66",
+    "url": "/barberBooking/static/media/kajsaJonsson.8244d22a.jpg"
   },
   {
-    "revision": "7c744e83c7becf4ced5e",
-    "url": "/barberBooking/static/css/main.0446e666.chunk.css"
+    "revision": "4cbab05e3cf51b37b91a",
+    "url": "/barberBooking/static/css/main.8f447595.chunk.css"
   },
   {
-    "revision": "567a10bbb99d6a093528",
-    "url": "/barberBooking/static/js/1.567a10bb.chunk.js"
+    "revision": "eea904b8612f8154f314",
+    "url": "/barberBooking/static/js/1.eea904b8.chunk.js"
   },
   {
     "revision": "3e60c8b6ead3b4a6e82a",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/media/razor.c16d75f2.svg"
   },
   {
-    "revision": "04aecadaab3d8075981435068ccfa127",
-    "url": "/barberBooking/static/media/women-treatment.04aecada.svg"
+    "revision": "71d1dd65fc31849a96e159064d6a21a2",
+    "url": "/barberBooking/static/media/scissors.71d1dd65.svg"
   },
   {
     "revision": "7e9a6a666a1070c21eb3b85fc679a38f",
@@ -36,16 +36,20 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/media/hairwashing.6b2a4d66.svg"
   },
   {
+    "revision": "04aecadaab3d8075981435068ccfa127",
+    "url": "/barberBooking/static/media/women-treatment.04aecada.svg"
+  },
+  {
     "revision": "acbd7a7419e4811467361b467932c3a9",
     "url": "/barberBooking/static/media/peterFiskare.acbd7a74.jpg"
   },
   {
-    "revision": "8244d22a23b4a18eb672bd2ab4f2dc66",
-    "url": "/barberBooking/static/media/kajsaJonsson.8244d22a.jpg"
+    "revision": "4cbab05e3cf51b37b91a",
+    "url": "/barberBooking/static/js/main.4cbab05e.chunk.js"
   },
   {
-    "revision": "7c744e83c7becf4ced5e",
-    "url": "/barberBooking/static/js/main.7c744e83.chunk.js"
+    "revision": "69e56fd3592a25496b791713ddafe2fc",
+    "url": "/barberBooking/static/media/johanKarlsson.69e56fd3.jpg"
   },
   {
     "revision": "c2440b00060bce0e0b4965c8f50c343b",
@@ -58,10 +62,6 @@ self.__precacheManifest = [
   {
     "revision": "c6d8f652d4fce2facf812bd9cfadf8af",
     "url": "/barberBooking/static/media/paint-bucket.c6d8f652.svg"
-  },
-  {
-    "revision": "0cabe3b7eb06f2b25af2e6b048959d0f",
-    "url": "/barberBooking/static/media/hairstyle.0cabe3b7.svg"
   },
   {
     "revision": "d87cf08fa80cb696480d8420e4666200",
@@ -80,15 +80,15 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/media/logo.5d5d9eef.svg"
   },
   {
+    "revision": "0cabe3b7eb06f2b25af2e6b048959d0f",
+    "url": "/barberBooking/static/media/hairstyle.0cabe3b7.svg"
+  },
+  {
     "revision": "958614f6fd9b8fbe4aa57c7ce8cba46f",
     "url": "/barberBooking/static/media/wigs.958614f6.svg"
   },
   {
-    "revision": "71d1dd65fc31849a96e159064d6a21a2",
-    "url": "/barberBooking/static/media/scissors.71d1dd65.svg"
-  },
-  {
-    "revision": "efae07435af04db988dba9dc216ef209",
+    "revision": "ee89f36559b35161dd9c05289e63be80",
     "url": "/barberBooking/index.html"
   }
 ];
