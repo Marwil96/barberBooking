@@ -16,24 +16,39 @@ const styles = {
     width:'80%'
   },
 };
-
+var prevVal = 0;
 class StepSlider extends Component {
   state = {
     value: 0,
   };
 
   handleChange = (event, value) => {
-    this.setState({ value });
-    if(value === 4) {
-      this.props.onSlide(2, "Öron långt hår", 1.4);
+    if(this.state.value > value ) {
+      if(value === 4) {
+        console.log("Bakåt")
+      this.props.onSlide([5,5], "Öron långt hår", 1.4, -1);
     } else if ( value === 8) {
-      this.props.onSlide(11, "Axel långt hår", 1.6);
+      this.props.onSlide([14,14], "Axel långt hår", 1.6, -1);
     } else if ( value === 12) {
-      this.props.onSlide(24, "Långt hår", 2);
+      this.props.onSlide([27,27], "Långt hår", 2, -1);
     } else if (value === 0) {
-      this.props.onSlide(0, "Kort hår", 1);
+      this.props.onSlide([2,0], "Kort hår", 1, -1);
     }
-  };
+    } else {
+      if(value === 4) {
+      this.props.onSlide([2,5], "Öron långt hår", 1.4, 1);
+    } else if ( value === 8) {
+      this.props.onSlide([5,14], "Axel långt hår", 1.6, 1);
+    } else if ( value === 12) {
+      this.props.onSlide([14,27], "Långt hår", 2, 1);
+    } else if (value === 0) {
+      this.props.onSlide([0,5], "Kort hår", 1, 1);
+    }
+
+    }
+    this.setState({ value });
+    var prevVal = value;
+    };
 
   render() {
     const { classes } = this.props;

@@ -87,7 +87,8 @@ class App extends Component {
       pickedDate:false,
       pickedMail:false,
       booked:"booked",
-      hairAnimationPhrase:"Kort hår"
+      hairAnimationPhrase:"Kort hår",
+      direction:1
   };
     this.onCardClick = this.onCardClick.bind(this);
   }
@@ -213,12 +214,13 @@ class App extends Component {
       return null
     }
   }
-  onSlide(step, phrase, priceDiffrence) {
+  onSlide(step, phrase, priceDiffrence, direction) {
     console.log(step)
     this.setState({
       hairAnimationStep: step,
       hairAnimationPhrase: phrase,
-      priceDiffrence: priceDiffrence
+      priceDiffrence: priceDiffrence,
+      direction: direction
     })
   }
 
@@ -234,7 +236,7 @@ class App extends Component {
         <div className="sectionContainer chooseStyle"> 
           <Header header={"1. Välj vilken hårlängd du har."} /> 
           <SubHeader header={"Dra i sliden för att visa hur långt hår du har."} />
-          <HairAnimation animationStep={this.state.hairAnimationStep} />
+          <HairAnimation animationStep={this.state.hairAnimationStep} direction={this.state.direction} />
           <h3 className="sliderHeader"> {this.state.hairAnimationPhrase} </h3>
           <StepSlider onSlide={this.onSlide.bind(this)} />
         </div>
