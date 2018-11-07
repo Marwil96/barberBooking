@@ -67,11 +67,13 @@ class FixedFooter extends Component {
 	}
 render() {
 	return (
-		<div className="fixedFooterContainer">
-        {this.whatFooter(this.props.state)}
-        {this.dragOutOverview(this.state.draggedOut)}
-        {this.bookedScreen(this.state.booked)}
-        </div>
+        <div className="fixedFooter"> 
+			<ProgressBar progressBar={this.props.progressBar} />
+        	<div className="arrowContainer">
+	        <ScrollArrow onScrollArrowClick={this.props.onScrollArrowClick} direction={"upp"}/>
+	        <ScrollArrow onScrollArrowClick={this.props.onScrollArrowClick} direction={"down"}/>
+	        </div>
+	        </div>
 	)
 	}
 }

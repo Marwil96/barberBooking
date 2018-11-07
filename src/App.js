@@ -20,24 +20,27 @@ import margaretaKaj from './img/barbers/margaretaKaj.jpg';
 import damklippning from './img/damklippning.svg';
 
 import damKlippning from './img/curl.svg';
+import washing from './img/damklippning.svg';
 import shaving from './img/razor.svg';
 import colouring from './img/paint-bucket.svg';
 import herrKlippning from './img/hairstyle.svg';
 import hairWash from './img/hairwashing.svg';
 import styling from './img/mirror.svg';
+import scissors from './img/scissors.svg';
 import permentering from './img/women-treatment.svg'
 
 import Header from './components/common/Header';
 import SubHeader from './components/common/SubHeader';
 import CardContainer from './components/CardContainer';
 import Card from './components/common/Card';
+import StepSlider from './components/common/StepSlider';
 import FixedFooter from './components/FixedFooter';
 import DatePicker from './components/DatePicker';
 import TimeContainer from './components/TimeContainer';
 import Calendar from './components/Calendar';
 import CheckoutContainer from './components/CheckoutContainer';
 import CheckoutContainerVersion2 from './components/CheckoutContainerVersion2';
-
+import HairAnimation from './components/common/HairAnimation.js';
 hotjar.initialize(1071700, 6);
 
   const defaultOptions = {
@@ -54,13 +57,14 @@ class App extends Component {
   constructor() {
     super();
      this.state = {
+      priceDiffrence: 1,  
       styleCard: [
-      {style:"Herr Klippning", cardSubheader:"370kr/30min", img:herrKlippning, value:"Herr Klippning" },
-      {style:"Dam Klippning", cardSubheader:"420kr/30min", img:damKlippning, value:"Dam Klippning"  },
-      {style:"Permentera", cardSubheader:"260kr/30min", img:permentering, value:"Permentera"},
-      {style:"Rakning", cardSubheader:"140kr/30min", img:shaving, value:"Rakning" },
-      {style:"Styling", cardSubheader:"199kr/30min", img:styling, value:"Styling" },
-      {style:"Färga håret", cardSubheader:"899kr/30min", img:colouring, value:"Färgning" }
+      {style:"Vanlig klippning", cardSubheader:(370), img:scissors, value:"Vanlig klippning" },
+      {style:"Tvätt & Föning", cardSubheader:(190), img:washing, value:"Dam Klippning"  },
+      {style:"Permentera", cardSubheader:(220), img:damKlippning, value:"Permentera"},
+      {style:"Rakning", cardSubheader:(140), img:shaving, value:"Rakning" },
+      {style:"Styling", cardSubheader:(200), img:styling, value:"Styling" },
+      {style:"Färga håret", cardSubheader:(899), img:colouring, value:"Färgning" }
       ],
       potraitCard: [
       {name:"Johanna Dahl", img:johannaDahl, value:"Johanna Dahl"},
@@ -82,7 +86,8 @@ class App extends Component {
       pickedStyle:false,
       pickedDate:false,
       pickedMail:false,
-      booked:"booked"
+      booked:"booked",
+      hairAnimationPhrase:"Kort hår"
   };
     this.onCardClick = this.onCardClick.bind(this);
   }
@@ -208,6 +213,14 @@ class App extends Component {
       return null
     }
   }
+  onSlide(step, phrase, priceDiffrence) {
+    console.log(step)
+    this.setState({
+      hairAnimationStep: step,
+      hairAnimationPhrase: phrase,
+      priceDiffrence: priceDiffrence
+    })
+  }
 
   render() {
     console.log(this.state.selectedDate)
@@ -217,10 +230,19 @@ class App extends Component {
       <div className="App">
         {this.renderBookedScreen(this.state.booked)}
         <FixedFooter progressBar={this.state.progressBar} onScrollArrowClick={this.onScrollArrowClick} state={this.state.whatState} barber={this.state.savedBarber} style={this.state.savedStyle} date={this.state.displayedDate} time={this.state.time}/>
+        
+        <div className="sectionContainer chooseStyle"> 
+          <Header header={"1. Välj vilken hårlängd du har."} /> 
+          <SubHeader header={"Dra i sliden för att visa hur långt hår du har."} />
+          <HairAnimation animationStep={this.state.hairAnimationStep} />
+          <h3 className="sliderHeader"> {this.state.hairAnimationPhrase} </h3>
+          <StepSlider onSlide={this.onSlide.bind(this)} />
+        </div>
+
         <div className="sectionContainer chooseStyle"> 
           <Header header={"1. Vilken typ av klippning vill du ha?"} /> 
           <SubHeader header={"Välj en eller flera behandlingar."} />
-          <CardContainer data={this.state.styleCard} cardHeader={"Damklippning"} cardSubheader={"360kr/30min"} img={damklippning} whatStyle="card" onClick={this.onCardClick} />
+          <CardContainer data={this.state.styleCard} cardHeader={"Damklippning"} cardSubheader={"360kr/30min"} priceDiffrence={this.state.priceDiffrence} img={damklippning} whatStyle="card" onClick={this.onCardClick} />
         </div>
         
         <div className="sectionContainer chooseBarber" ref={ "chooseBarber" }> 
@@ -236,7 +258,7 @@ class App extends Component {
         </div>
 
         <div className="sectionContainer choosePayment" ref={ "choosePayment" }> 
-          <Header header={"4.Slutför bokningen"} /> 
+          <Header header={"Slutför bokningen"} /> 
           <CheckoutContainerVersion2 onClick={this.onCardClick} style={this.state.styleCard} barbers={this.state.potraitCard} date={completeTime} savedBarber={this.state.savedBarber} savedStyle={this.state.savedStyle} onButtonClick={this.onBookedButtonClick.bind(this)} />       
         </div>
       </div>

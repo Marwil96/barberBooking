@@ -8,7 +8,6 @@ const SubHeader = ({header, color, align}) => (
 const SubHeaderStyle = {
    fontSize: 16,
    width: '74%',
-   marginLeft: 16,
    marginTop: -6,
    fontWeight: 500,
    textAlign: 'center',

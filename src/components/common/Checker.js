@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 
 import Lottie from 'react-lottie';
-import animationData from '../..//img/animation/checkedDone.json'
+import animationData from '../../img/animation/checkedDone.json'
 
   const defaultOptions = {
       loop: false,
