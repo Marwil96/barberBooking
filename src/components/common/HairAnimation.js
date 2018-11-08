@@ -18,10 +18,11 @@ import animationData from '../../img/animation/data.json'
         preserveAspectRatio: 'xMidYMid slice'
       }
     };
-    console.log(this.props.animationStep, "HairAnimation")
+    var height = (window.innerHeight/100) * 40;
+    console.log(this.props.animationStep, "HairAnimation", height)
         return (
           <Lottie options={defaultOptions}
-              height={270}
+              height={height}
               width={229}
               speed={0.25}
               eventListeners={

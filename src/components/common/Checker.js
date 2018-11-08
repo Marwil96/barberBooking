@@ -13,8 +13,8 @@ import animationData from '../../img/animation/checkedDone.json'
       }
     };
 
-const Checker = ({animation, whatAnimation}) => (
-   	<div className={"checkerAnimationContainer " + whatAnimation}> 
+const Checker = ({animation, whatAnimation, opacity}) => (
+   	<div className={"checkerAnimationContainer " + whatAnimation} style={{opacity:opacity}}> 
    		<Lottie options={defaultOptions}
               height={100}
               width={35}

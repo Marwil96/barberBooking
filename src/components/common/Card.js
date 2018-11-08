@@ -13,15 +13,22 @@ import womentreatment from '../../img/women-treatment.svg'
 
 class Card extends Component {
 	state = {
-	animation:true
+	animation:true,
+	opacity: 0
 }
+opacityChanger(animation) {
+if(animation === true) {
+	this.setState({ opacity: 1})
+}else {
+	this.setState({opacity:0})
+}}
 	render() {
 		return(
-		<div className={this.props.whatStyle} onClick={() => { this.props.onClick(this.props.whatStyle, this.props.cardHeader); this.setState({animation:!this.state.animation})}}> 
+		<div className={this.props.whatStyle} onClick={() => { this.props.onClick(this.props.whatStyle, this.props.cardHeader); this.setState({animation:!this.state.animation}); this.opacityChanger(this.state.animation)}}> 
         	<img src={this.props.img} />
         	<h2>{this.props.cardHeader}</h2>
         	<h3>{this.props.cardSubheader}</h3>
-        	<Checker animation={this.state.animation} />
+        	<Checker animation={this.state.animation} opacity={this.state.opacity} />
         </div>
 			)
 	}

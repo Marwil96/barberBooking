@@ -11,8 +11,8 @@ a {
 }
 .fixedFooter {
   position:fixed;
-  height:8vh;
-  min-height:64px;
+  height:9vh;
+  /*min-height:64px;*/
   width:100%;
   background:#1D1D1D;
   bottom:0;
@@ -193,6 +193,10 @@ a {
   display: flex;
   flex-direction: column;
 }
+.chooseHairLength {
+  margin-top:1vh;
+    align-items:center;
+}
 .chooseStyle {
     margin-top:8vh;
     align-items:center;
@@ -215,9 +219,10 @@ a {
   font-size: 28px;
   width: 80%;
   /*margin-left:16px;*/
-  margin-bottom:16px;
+  /*margin-bottom:16px;*/
   text-align: center;
   align-self: center;
+  margin-bottom:10px;
 }
 .headerCenter {
   width:100%;
@@ -738,9 +743,11 @@ font-size:16px;
 .checkerAnimationContainer {
   position:absolute;
   align-self: flex-end;
+   -webkit-transform: translate3d(11px, 57px, 0px);
   transform: translate3d(11px, 57px, 0px);
 }
 .checkerTimeButton {
+   -webkit-transform: translate3d(9px, 18px, 0px);
   transform: translate3d(9px, 18px, 0px);
 }
 .sliderHeader{

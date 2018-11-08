@@ -12,7 +12,8 @@
     "react-dom": "^16.5.2",
     "react-hotjar": "^1.0.11",
     "react-lottie": "^1.2.3",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "react-transition-group": "^2.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

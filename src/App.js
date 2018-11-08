@@ -5,8 +5,8 @@ import './App.css';
 import dateFns from "date-fns";
 import { hotjar } from 'react-hotjar';
 import Lottie from 'react-lottie';
-import animationData from './img/animation/confetti.json'
 
+import animationData from './img/animation/confetti.json'
 import johannaDahl from './img/barbers/johannaDahl.jpg';
 import peterFiskare from './img/barbers/peterFiskare.jpg';
 import kajsaJonsson from './img/barbers/kajsaJonsson.jpg';
@@ -15,10 +15,7 @@ import johanKarlsson from './img/barbers/johanKarlsson.jpg';
 import margaretaKaj from './img/barbers/margaretaKaj.jpg';
 
 
-
-
 import damklippning from './img/damklippning.svg';
-
 import damKlippning from './img/curl.svg';
 import washing from './img/damklippning.svg';
 import shaving from './img/razor.svg';
@@ -233,7 +230,7 @@ class App extends Component {
         {this.renderBookedScreen(this.state.booked)}
         <FixedFooter progressBar={this.state.progressBar} onScrollArrowClick={this.onScrollArrowClick} state={this.state.whatState} barber={this.state.savedBarber} style={this.state.savedStyle} date={this.state.displayedDate} time={this.state.time}/>
         
-        <div className="sectionContainer chooseStyle"> 
+        <div className="sectionContainer chooseHairLength"> 
           <Header header={"1. Välj vilken hårlängd du har."} /> 
           <SubHeader header={"Dra i sliden för att visa hur långt hår du har."} />
           <HairAnimation animationStep={this.state.hairAnimationStep} direction={this.state.direction} />
@@ -242,7 +239,7 @@ class App extends Component {
         </div>
 
         <div className="sectionContainer chooseStyle"> 
-          <Header header={"1. Vilken typ av klippning vill du ha?"} /> 
+          <Header header={"2. Vilken typ av klippning vill du ha?"} /> 
           <SubHeader header={"Välj en eller flera behandlingar."} />
           <CardContainer data={this.state.styleCard} cardHeader={"Damklippning"} cardSubheader={"360kr/30min"} priceDiffrence={this.state.priceDiffrence} img={damklippning} whatStyle="card" onClick={this.onCardClick} />
         </div>

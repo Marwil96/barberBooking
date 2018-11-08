@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/lab/Slider';
 
+import scissors from '../../img/scissors.svg';
+
 const styles = {
   root: {
     width: "100%",
@@ -15,6 +17,17 @@ const styles = {
     padding: '22px 0px',
     width:'80%'
   },
+  thumb: {
+    height: '24px',
+    width: '24px',
+    backgroundColor:'#f44336'
+  },
+  track: {
+    backgroundColor:'#f44336'
+  },
+  thumbIcon: {
+    transform:'rotate(90deg)'
+  }
 };
 var prevVal = 0;
 class StepSlider extends Component {
@@ -57,11 +70,16 @@ class StepSlider extends Component {
     return (
       <div className={classes.root}>
         <Slider
-          classes={{ root: classes.slider }}
+          classes={{ root: classes.slider, thumb: classes.thumb, track: classes.track }}
           value={value}
           min={0}
           max={12}
           step={4}
+          // thumb={<img
+          //     alt="slider thumb icon"
+          //     src={scissors}
+          //     className={classes.thumbIcon}
+          //   />}
           onChange={this.handleChange}
         />
       </div>
