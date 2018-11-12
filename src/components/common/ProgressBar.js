@@ -3,8 +3,11 @@ import '../../App.css';
 
 
 const ProgressBar = ({progressBar}) => (
-	<div className="progressBar"> 
-    	<div className="innerProgressBar" style={{width:progressBar+"%"}}> </div>
+	<div className="progressBarContainer">
+		<div className="progressBar"> 
+	    	<div className="innerProgressBar" style={{width:progressBar+"%"}}> </div>
+	    </div>
+	    <h3> {Math.floor(progressBar)}% </h3>
     </div>
 );
 

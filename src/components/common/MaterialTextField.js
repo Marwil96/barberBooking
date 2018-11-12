@@ -55,12 +55,10 @@ class MaterialTextField extends Component {
       value: event.target.value,
     });
   };
-
 render() {
 	const classes = this.props;
 	const whatKind = this.props.whatKind;
-	console.log(this.props.data[1].name, whatKind, this.props.value)
-
+	console.log("MENUITEMS INPUTFIELD", this.state.value)
 	return(
 		<TextField
           id="filled-select-currency"

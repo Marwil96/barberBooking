@@ -14,7 +14,8 @@ import womentreatment from '../../img/women-treatment.svg'
 class Card extends Component {
 	state = {
 	animation:true,
-	opacity: 0
+	opacity: 0,
+	cardActivated: false
 }
 opacityChanger(animation) {
 if(animation === true) {
@@ -24,7 +25,7 @@ if(animation === true) {
 }}
 	render() {
 		return(
-		<div className={this.props.whatStyle} onClick={() => { this.props.onClick(this.props.whatStyle, this.props.cardHeader); this.setState({animation:!this.state.animation}); this.opacityChanger(this.state.animation)}}> 
+		<div className={this.props.whatStyle + " " + this.props.imageTrue} onClick={() => { this.props.onClick(this.props.whatStyle, this.props.cardHeader, this.state.cardActivated, this.props.price, this.props.time); this.setState({animation:!this.state.animation, cardActivated: !this.state.cardActivated}); this.opacityChanger(this.state.animation)}}> 
         	<img src={this.props.img} />
         	<h2>{this.props.cardHeader}</h2>
         	<h3>{this.props.cardSubheader}</h3>

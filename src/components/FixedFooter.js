@@ -69,11 +69,12 @@ render() {
 	return (
         <div className="fixedFooter"> 
 			<ProgressBar progressBar={this.props.progressBar} />
-        	<div className="arrowContainer">
-	        <ScrollArrow onScrollArrowClick={this.props.onScrollArrowClick} direction={"upp"}/>
-	        <ScrollArrow onScrollArrowClick={this.props.onScrollArrowClick} direction={"down"}/>
+
+        	<div className="priceContainer">
+		        <div><h3>Est tid</h3><h3>Pris</h3> </div>
+		        <div><h2>{this.props.time} min</h2><h2>{this.props.price} kr</h2> </div>
 	        </div>
-	        </div>
+	    </div>
 	)
 	}
 }

@@ -5,6 +5,7 @@ import TimeButton from './common/TimeButton';
 import InputField from './common/InputField';
 import DisabledInputField from './common/DisabledInputField';
 import MaterialTextField from './common/MaterialTextField';
+import SelectMultipleField from './common/SelectMultipleField';
 
 
 
@@ -47,8 +48,8 @@ class CheckoutContainerVersion2 extends Component {
 							<InputField value="" id="filled-name" onInputChange={this.onInputChange.bind(this)} label="Namn" onBlur={this.onInputSubmit.bind(this)} disabled={false} type="text" />	
 							<InputField value="" id="filled-name" onInputChange={this.onInputChange.bind(this)} label="Email" onBlur={this.onInputSubmit.bind(this)} disabled={false} type="email" />	
 							<h3> Överblick bokning </h3>
-							<MaterialTextField data={this.props.style} label="Styling" value={this.props.savedStyle}/>	
 							<MaterialTextField data={this.props.barbers} label="Frisör" value={this.props.savedBarber}/>
+							<SelectMultipleField data={this.props.style} label="Frisör" value={this.props.savedStyle}  />
 							<DisabledInputField value={this.props.date} label="Datum" disabled={true} id="filled-disabled"/>										
 						</form>
 						<div className="formButton" onClick={() => this.props.onButtonClick(true)}> Skicka in bokningen </div>	

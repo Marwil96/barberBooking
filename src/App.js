@@ -48,7 +48,9 @@ hotjar.initialize(1071700, 6);
         preserveAspectRatio: 'xMidYMid slice'
       }
     };
-
+ var array = []
+ var completePrice = 0
+ var completeTime = 0
 
 class App extends Component {
   constructor() {
@@ -56,15 +58,15 @@ class App extends Component {
      this.state = {
       priceDiffrence: 1,  
       styleCard: [
-      {style:"Vanlig klippning", cardSubheader:(370), img:scissors, value:"Vanlig klippning" },
-      {style:"Tvätt & Föning", cardSubheader:(190), img:washing, value:"Dam Klippning"  },
-      {style:"Permentera", cardSubheader:(220), img:damKlippning, value:"Permentera"},
-      {style:"Rakning", cardSubheader:(140), img:shaving, value:"Rakning" },
-      {style:"Styling", cardSubheader:(200), img:styling, value:"Styling" },
-      {style:"Färga håret", cardSubheader:(899), img:colouring, value:"Färgning" }
+      {style:"Vanlig klippning", cardSubheader:(370), estimatedTime:(30), img:scissors, value:"Vanlig klippning" },
+      {style:"Tvätt & Föning", cardSubheader:(190), estimatedTime:(15), img:washing, value:"Tvätt & Föning"  },
+      {style:"Permentera", cardSubheader:(420), estimatedTime:(45), img:damKlippning, value:"Permentera"},
+      {style:"Rakning", cardSubheader:(140), estimatedTime:(15), img:shaving, value:"Rakning" },
+      {style:"Styling", cardSubheader:(200), estimatedTime:(15), img:styling, value:"Styling" },
+      {style:"Färga håret", cardSubheader:(599), estimatedTime:(60), img:colouring, value:"Färga håret" }
       ],
       potraitCard: [
-      {name:"Johanna Dahl", img:johannaDahl, value:"Johanna Dahl"},
+      {name:"Spelar ingen roll", img:johannaDahl, image:" noImage", value:"Johanna Dahl"},
       {name:"Peter Fiskare", img:peterFiskare, value:"Peter Fiskare"},
       {name:"Kajsa Jonsson", img:kajsaJonsson, value:"Kajsa Jonsson"},
       {name:"Hanna Petterson", img:hannaPetterson, value:"Hanna Petterson" },
@@ -75,17 +77,19 @@ class App extends Component {
       displayedDate: dateFns.format(new Date(),
   'dddd, MMMM Do'),
       progressBar: 0,
-      savedStyle: "Damklippning",
+      savedStyle: [],
       savedBarber: "Undefined",
       whatState: 0,
-      time:" 12.00 - 12.20" ,
+      pickedTime:" 12.00 - 12.20" ,
       pickedBarber:false,
       pickedStyle:false,
       pickedDate:false,
       pickedMail:false,
       booked:"booked",
       hairAnimationPhrase:"Kort hår",
-      direction:1
+      direction:1,
+      price: 0,
+      time: 0
   };
     this.onCardClick = this.onCardClick.bind(this);
   }
@@ -100,19 +104,43 @@ class App extends Component {
     });
   };
 
-  onCardClick(whatStyle, cardHeader){
+  onCardClick(whatStyle, cardHeader, cardActivated, price, time){
     if(whatStyle === "card") {
       if(this.state.pickedStyle === false) {
-        console.log("whatStyle === CARD", cardHeader)
+        array.push(cardHeader)
+        completePrice = completePrice + price
+        completeTime = completeTime + time
+        console.log("Price", this.state.time, time)
         this.setState({
-        savedStyle: cardHeader,
+        savedStyle: array,
         progressBar: (this.state.progressBar + 33.733),
         whatState: (this.state.whatState + 1),
-        pickedStyle:true
+        pickedStyle:true,
+        price: completePrice,
+        time: completeTime
       })
-    }else {
+    } else if(cardActivated === true) {
+      console.log("Tar bort del ur array", cardHeader, array)
+       completePrice = completePrice - price
+      completeTime = completeTime - time
+     array = array.filter(item => !cardHeader.includes(item))
+     console.log("Tagit bort del ur array", cardHeader, array)
       this.setState({
-        savedStyle: cardHeader
+        savedStyle: array,
+        pickedStyle:true,
+        price: completePrice,
+        time:completeTime 
+      })
+    }
+    else {
+      array.push(cardHeader)
+      completePrice = completePrice + price
+      completeTime = completeTime + time
+      console.log("Price", this.state.time, time)
+      this.setState({
+        savedStyle: array,
+        price: completePrice,
+        time:completeTime
       })
     }
     // const myDomNode = ReactDOM.findDOMNode(this.refs.chooseBarber)
@@ -121,13 +149,13 @@ class App extends Component {
       if(this.state.pickedDate === false) {
         this.setState({
           progressBar: (this.state.progressBar + 33.633),
-          time: cardHeader,
+          pickeTime: cardHeader,
           whatState: (this.state.whatState + 1),
           pickedDate:true
         })
       }else {
         this.setState({
-          time: cardHeader
+          pickeTime: cardHeader
         })
       }
     const myDomNode = ReactDOM.findDOMNode(this.refs.choosePayment)
@@ -156,8 +184,8 @@ class App extends Component {
     })
   }
   else if(whatStyle === "onCalenderClick") {
-    const myDomNode = ReactDOM.findDOMNode(this.refs.chooseClock)
-    myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    // const myDomNode = ReactDOM.findDOMNode(this.refs.chooseClock)
+    // myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   }
   else {
     if(this.state.pickedBarber === false) {
@@ -173,8 +201,8 @@ class App extends Component {
       savedBarber: cardHeader
     })
   }
-    const myDomNode = ReactDOM.findDOMNode(this.refs.chooseTime)
-    myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    // const myDomNode = ReactDOM.findDOMNode(this.refs.chooseTime)
+    // myDomNode.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     }
   }
 
@@ -223,12 +251,12 @@ class App extends Component {
 
   render() {
     console.log(this.state.selectedDate)
-    var completeTime = (this.state.displayedDate + this.state.time)
-    console.log(this.state.displayedDate, this.state.time)
+    var completeDate = (this.state.displayedDate + " " + this.state.pickeTime)
+    console.log(this.state.displayedDate, this.state.pickeTime)
     return (
       <div className="App">
         {this.renderBookedScreen(this.state.booked)}
-        <FixedFooter progressBar={this.state.progressBar} onScrollArrowClick={this.onScrollArrowClick} state={this.state.whatState} barber={this.state.savedBarber} style={this.state.savedStyle} date={this.state.displayedDate} time={this.state.time}/>
+        <FixedFooter progressBar={this.state.progressBar} onScrollArrowClick={this.onScrollArrowClick} state={this.state.whatState} barber={this.state.savedBarber} style={this.state.savedStyle} date={this.state.displayedDate} pickeTime={this.state.pickeTime} price={this.state.price} time={this.state.time}/>
         
         <div className="sectionContainer chooseHairLength"> 
           <Header header={"1. Välj vilken hårlängd du har."} /> 
@@ -258,7 +286,7 @@ class App extends Component {
 
         <div className="sectionContainer choosePayment" ref={ "choosePayment" }> 
           <Header header={"Slutför bokningen"} /> 
-          <CheckoutContainerVersion2 onClick={this.onCardClick} style={this.state.styleCard} barbers={this.state.potraitCard} date={completeTime} savedBarber={this.state.savedBarber} savedStyle={this.state.savedStyle} onButtonClick={this.onBookedButtonClick.bind(this)} />       
+          <CheckoutContainerVersion2 onClick={this.onCardClick} style={this.state.styleCard} barbers={this.state.potraitCard} date={completeDate} savedBarber={this.state.savedBarber} savedStyle={this.state.savedStyle} onButtonClick={this.onBookedButtonClick.bind(this)} />       
         </div>
       </div>
     );
