@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/media/kajsaJonsson.8244d22a.jpg"
   },
   {
-    "revision": "346375d16edbbacebbe3",
-    "url": "/barberBooking/static/css/main.2a0f52be.chunk.css"
+    "revision": "6cf267af7639106bc099",
+    "url": "/barberBooking/static/css/main.eab10943.chunk.css"
   },
   {
     "revision": "e5de2785552e5fc2e0ca",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/media/peterFiskare.acbd7a74.jpg"
   },
   {
-    "revision": "346375d16edbbacebbe3",
-    "url": "/barberBooking/static/js/main.346375d1.chunk.js"
+    "revision": "6cf267af7639106bc099",
+    "url": "/barberBooking/static/js/main.6cf267af.chunk.js"
   },
   {
     "revision": "69e56fd3592a25496b791713ddafe2fc",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/barberBooking/static/media/wigs.958614f6.svg"
   },
   {
-    "revision": "3046fa4926af786f4a00bb0f2a566556",
+    "revision": "b48b92e83d25aca9117c33d9eda08f08",
     "url": "/barberBooking/index.html"
   }
 ];
